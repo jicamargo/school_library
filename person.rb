@@ -17,6 +17,7 @@ class Person < Nameable
   attr_writer :id
 
   def initialize(age, name = 'Unknown', parent_permission: true)
+    super()
     @name = name
     @age = age
     @parent_permission = parent_permission
@@ -44,6 +45,7 @@ class PersonDecorator < Nameable
   attr_accessor :person
 
   def initialize(person)
+    super()
     @person = person
   end
 
@@ -53,9 +55,9 @@ class PersonDecorator < Nameable
   end
 end
 
-# Concrete Decorators 
+# Concrete Decorators
 # call the wrapped object and alter its result in some way.
-# 
+#
 # Decorator class: CapitalizeDecorator
 #
 class CapitalizeDecorator < PersonDecorator
@@ -64,13 +66,12 @@ class CapitalizeDecorator < PersonDecorator
   end
 end
 
-# Concrete Decorators 
+# Concrete Decorators
 # call the wrapped object and alter its result in some way.
-# 
+#
 # Decorator class: TrimmerDecorator
-# Implement a method correct_name that makes sure that the output of 
-# @nameable.correct_name has a maximum of 10 characters. 
-# If it's longer it should trim the word.
+# makes sure that the output of correct_name has a maximum of 10 characters.
+#
 class TrimmerDecorator < PersonDecorator
   def correct_name
     name = @person.correct_name
