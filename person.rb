@@ -3,10 +3,10 @@
 # Class representing a person in the library application
 #
 class Person
-  attr_accessor :id, :name, :age
+  attr_accessor :name, :age
+  attr_writer :id
 
-  def initialize(id, age, name = 'Unknown', parent_permission = true)
-    @id = id
+  def initialize(age, name: 'Unknown', parent_permission: true)
     @name = name
     @age = age
     @parent_permission = parent_permission

@@ -8,8 +8,8 @@ require_relative 'person'
 class Teacher < Person
   attr_reader :specialization
 
-  def initialize(id, age, specialization, name = 'Teacher name missing')
-    super(id, age, name, true)
+  def initialize(age, specialization)
+    super(age)
     @specialization = specialization
   end
 
