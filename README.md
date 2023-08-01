@@ -13,7 +13,6 @@
   - [🛠 Built With](#built-with)
     - [Tech Stack](#tech-stack)
     - [Key Features](#key-features)
-  - [🚀 Live Demo](#live-demo)
 - [💻 Getting Started](#getting-started)
   - [Setup](#setup)
   - [Prerequisites](#prerequisites)
@@ -27,8 +26,7 @@
 - [📝 License](#license)
 
 <!-- PROJECT DESCRIPTION -->
-
-# 📖 SCHOOL LIBRARY APP <a name="about-project"></a>
+## 📖 About the Project <a name="about-project"></a>
 
 The School Library App is a powerful and user-friendly tool designed to assist the librarians at OOP University in efficiently managing the library's vast collection of books and keeping track of student and teacher borrowing records. This well-organized and beautiful application allows librarians to easily add new students and teachers to the system, add new books to the library's inventory, and maintain accurate records of book borrowings.!
 ## 🛠 Built With <a name="built-with"></a>
@@ -56,14 +54,6 @@ The School Library App is a powerful and user-friendly tool designed to assist t
 
 - **Data Persistence**: All library data, including student and teacher records, book inventory, and borrowing information, is automatically saved to ensure data persistence between app sessions.
 
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- LIVE DEMO -->
-
-## 🚀 Live Demo <a name="live-demo"></a>
-
-- Cooming soon 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
