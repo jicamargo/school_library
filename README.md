@@ -28,7 +28,7 @@
 
 <!-- PROJECT DESCRIPTION -->
 
-# 📖 SCHOOL LIBRARY APP <a name="about-project"></a>
+f
 
 The School Library App is a powerful and user-friendly tool designed to assist the librarians at OOP University in efficiently managing the library's vast collection of books and keeping track of student and teacher borrowing records. This well-organized and beautiful application allows librarians to easily add new students and teachers to the system, add new books to the library's inventory, and maintain accurate records of book borrowings.!
 ## 🛠 Built With <a name="built-with"></a>
