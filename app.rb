@@ -17,13 +17,26 @@ class App
   def list_books(title = 'List of Books')
     print_title('List of Books') unless title.empty?
     books = @library.list_books
-    books.each.with_index { |book, index| puts "#{index + 1} -> #{book.title}, Author: #{book.author}" }
+    books.each.with_index do |book, index|
+      title = book.title.ljust(20, ' ')
+      author = book.author.ljust(20, ' ')
+      puts "#{index + 1} -> #{title} Author:#{author}"
+    end
   end
 
   def list_people(title = 'List of People')
     print_title(title) unless title.empty?
     people = @library.list_people
-    people.each.with_index { |person, index| puts "#{index + 1} -> #{person.name} (#{person.class.name})" }
+    people.each.with_index { |person, index| print_person(person, index) }
+  end
+
+  def print_person(person, index)
+    class_name = person.class.name.ljust(7)
+    id = person.id.to_s.ljust(4, ' ')
+    name = person.name.ljust(20)
+    age = person.age.to_s.rjust(2, ' ')
+
+    puts "#{index + 1} - [#{class_name}] ID:#{id} Name:#{name} Age:#{age}"
   end
 
   def create_person
@@ -94,35 +107,32 @@ class App
     @library.create_rental(book, person)
   end
 
-  def list_rentals_for_person
-    print_title('List Rentals for Person')
-    person = select_person
-
-    if person.nil?
-      puts 'Person not found.'
-      return
-    end
-
-    rentals = @library.list_rentals_for_person(person)
-    display_rentals(person, rentals)
-  end
-
   def select_person(title = 'Select a Person')
     puts "#{title}\n\n"
     list_people('')
-    print "\nEnter the number of the person to see their rentals: "
+    print "\nEnter the number of the person (not ID): "
     person_index = gets.chomp.to_i
 
     people = @library.list_people
     people[person_index - 1]
   end
 
-  def display_rentals(person, rentals)
+  def list_rentals_for_person
+    print_title('List Rentals for Person')
+    print 'Enter the person ID: '
+    person_id = gets.chomp.to_i
+    rentals = @library.list_rentals_for_person(person_id)
+    display_rentals(person_id, rentals)
+  end
+
+  def display_rentals(person_id, rentals)
+    return if rentals.nil?
+
     if rentals.empty?
       puts 'This person has no rentals.'
     else
-      puts "___ List of Rentals for #{person.name} (#{person.class.name}) ___\n\n"
-      rentals.each { |rental| puts "#{rental.book.title} (#{rental.date})" }
+      puts "___ List of Rentals for ID: #{person_id} ___\n\n"
+      rentals.each { |rental| puts "Title:#{rental.book.title.ljust(20, ' ')} Date:#{rental.date}" }
     end
   end
 end

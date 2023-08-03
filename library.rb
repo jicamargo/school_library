@@ -65,8 +65,8 @@ class Library
     @people
   end
 
-  def list_rentals_for_person(person_rent)
-    person = @people.find { |p| p == person_rent }
+  def list_rentals_for_person(person_id)
+    person = @people.find { |p| p.id == person_id }
     if person
       @rentals.select { |rental| rental.person == person }
     else
