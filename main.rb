@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # main.rb
 
 # This file is the main entry point of the application.
@@ -16,12 +14,6 @@ def clear_console
   end
 end
 
-def user_input
-  choice = gets.chomp.to_i
-  puts "\n"
-  choice
-end
-
 def welcome_message
   puts "\n\n> > > > WELCOME TO LIBRARY APP < < < <\n\n"
 end
@@ -36,15 +28,18 @@ def menu_options
   puts "  7. Exit\n\n\n"
 end
 
-def prompt_user_input
+def user_input
   print '  Please enter a number [1..7] to select an option: '
+  choice = gets.chomp.to_i
+  puts ' Invalid choice. Please try again (a number from 1 to 7).' unless choice.between?(1, 7)
+  puts "\n"
+  choice
 end
 
 def main_menu
   clear_console
   welcome_message
   menu_options
-  prompt_user_input
   user_input
 end
 
@@ -65,15 +60,9 @@ def handle_choice(choice, app)
     app.create_book
   when 5
     app.create_rental
-  when 6
-    app.list_rentals_for_person
-  when 7
-    puts ' < < < Goodbye! > > >'
-    return true
   else
-    puts ' Invalid choice. Please try again (a number from 1 to 7).'
+    app.list_rentals_for_person
   end
-  false
 end
 
 def main
@@ -81,12 +70,13 @@ def main
 
   loop do
     choice = main_menu
-    exit_app = handle_choice(choice, app)
-    break if exit_app
-
+    handle_choice(choice, app) if choice.between?(1, 6)
+    if choice == 7
+      puts ' < < < Goodbye! > > >'
+      break
+    end
     press_enter_to_continue
   end
 end
-
 
 main if __FILE__ == $PROGRAM_NAME
