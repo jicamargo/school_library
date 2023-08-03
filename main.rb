@@ -1,4 +1,10 @@
-require_relative 'test_app'
+# main.rb
+
+# This file is the main entry point of the application.
+# It is responsible for the user interface (menu) and for
+# calling the methods of the App class.
+
+require_relative 'app'
 
 def clear_console
   if RUBY_PLATFORM =~ /win32|win64|x64|\.NET|windows|cygwin|mingw32/i

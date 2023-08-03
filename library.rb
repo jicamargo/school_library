@@ -1,3 +1,8 @@
+# library.rb
+
+# This class joins all the other classes together.
+# It is responsible for creating and storing instances of the other classes,
+
 require_relative 'person'
 require_relative 'teacher'
 require_relative 'student'

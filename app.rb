@@ -1,4 +1,9 @@
-require_relative 'test_library'
+# app.rb
+
+# This class is responsible for the user interface and for
+# calling the methods of the Library class.
+
+require_relative 'library'
 
 def print_title(title)
   puts "\n_____ #{title} _____\n\n"
