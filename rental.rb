@@ -14,10 +14,22 @@ class Rental
     #
     # setter for book (a rental can only belong to one book)
     @book = book
-    book.rentals << self
+    book.rentals << self unless book.rentals.include?(self)
 
     # setter for person (a rental can only belong to one person)
     @person = person
-    person.rentals << self
+    person.rentals << self unless person.rentals.include?(self)
+  end
+
+  # Instead of setter for entire collection a method to add one by one
+  def book=(book)
+    @book = book
+    book.rentals << self unless book.rentals.include?(self)
+  end
+
+  # Instead of setter for entire collection a method to add one by one
+  def person=(person)
+    @person = person
+    person.rentals << self unless person.rentals.include?(self)
   end
 end
