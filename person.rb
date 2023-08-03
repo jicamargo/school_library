@@ -6,8 +6,7 @@ require_relative 'nameable'
 # Class representing a person in the library application
 #
 class Person < Nameable
-  attr_accessor :name, :age
-  attr_writer :id
+  attr_accessor :name, :age, :id
   attr_reader :rentals
 
   def initialize(name = 'Unknown', age = 0, parent_permission: true)
