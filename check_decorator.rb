@@ -1,6 +1,8 @@
 # main.rb
 
 require_relative 'person'
+require_relative 'trimmer_decorator'
+require_relative 'capitalize_decorator'
 
 puts "\n##### TEST FOR DECORATORS #####\n"
 person = Person.new(22, 'maximilianus')
