@@ -94,9 +94,9 @@ cd school_library
 
 ### Usage
 
-To use the SCHOOL LIBRARY APP, run the school_library.rb script:
+To use the SCHOOL LIBRARY APP, run the main.rb script:
 ```
-ruby school_library.rb
+ruby main.rb
 ```
 
 -- The program will show a menu to interact with it.
