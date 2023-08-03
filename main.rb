@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # main.rb
 
 # This file is the main entry point of the application.
@@ -14,16 +16,36 @@ def clear_console
   end
 end
 
-def print_menu
+def user_input
+  choice = gets.chomp.to_i
+  puts "\n"
+  choice
+end
+
+def welcome_message
   puts "\n\n> > > > WELCOME TO LIBRARY APP < < < <\n\n"
-  puts "  1. List all books"
-  puts "  2. List all people"
-  puts "  3. Create a person"
-  puts "  4. Create a book"
-  puts "  5. Create a rental"
-  puts "  6. List rentals for a person"
+end
+
+def menu_options
+  puts '  1. List all books'
+  puts '  2. List all people'
+  puts '  3. Create a person'
+  puts '  4. Create a book'
+  puts '  5. Create a rental'
+  puts '  6. List rentals for a person'
   puts "  7. Exit\n\n\n"
-  print "  Please enter a number [1..7] to select an option: "
+end
+
+def prompt_user_input
+  print '  Please enter a number [1..7] to select an option: '
+end
+
+def main_menu
+  clear_console
+  welcome_message
+  menu_options
+  prompt_user_input
+  user_input
 end
 
 def press_enter_to_continue
@@ -31,36 +53,40 @@ def press_enter_to_continue
   gets
 end
 
+def handle_choice(choice, app)
+  case choice
+  when 1
+    app.list_books
+  when 2
+    app.list_people
+  when 3
+    app.create_person
+  when 4
+    app.create_book
+  when 5
+    app.create_rental
+  when 6
+    app.list_rentals_for_person
+  when 7
+    puts ' < < < Goodbye! > > >'
+    return true
+  else
+    puts ' Invalid choice. Please try again (a number from 1 to 7).'
+  end
+  false
+end
+
 def main
   app = App.new
 
   loop do
-    clear_console
-    print_menu
-    choice = gets.chomp.to_i
-    puts "\n"
+    choice = main_menu
+    exit_app = handle_choice(choice, app)
+    break if exit_app
 
-    case choice
-    when 1
-      app.list_books
-    when 2
-      app.list_people
-    when 3
-      app.create_person
-    when 4
-      app.create_book
-    when 5
-      app.create_rental
-    when 6
-      app.list_rentals_for_person
-    when 7
-      puts " < < < Goodbye! > > >"
-      break
-    else
-      puts " Invalid choice. Please try again (a number from 1 to 7)."
-    end
     press_enter_to_continue
   end
 end
+
 
 main if __FILE__ == $PROGRAM_NAME

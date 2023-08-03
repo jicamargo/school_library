@@ -1,8 +1,5 @@
 # library.rb
 
-# This class joins all the other classes together.
-# It is responsible for creating and storing instances of the other classes,
-
 require_relative 'person'
 require_relative 'teacher'
 require_relative 'student'
@@ -10,6 +7,8 @@ require_relative 'book'
 require_relative 'classroom'
 require_relative 'rental'
 
+# This class joins all the other classes together.
+# It is responsible for creating and storing instances of the other classes,
 class Library
   def initialize
     @people = []
@@ -47,12 +46,12 @@ class Library
     book = @books.find { |b| b == book_rent }
 
     if person && book
-      date = Time.now.strftime("%Y-%m-%d")
+      date = Time.now.strftime('%Y-%m-%d')
       rental = Rental.new(date, book, person)
       @rentals << rental
       rental
     else
-      puts "Person or Book not found."
+      puts 'Person or Book not found.'
     end
   end
 
@@ -71,7 +70,7 @@ class Library
     if person
       @rentals.select { |rental| rental.person == person }
     else
-      puts "Person not found."
+      puts 'Person not found.'
     end
   end
 end
