@@ -38,14 +38,6 @@ class Person < Nameable
     Rental.new(date, book, self)
   end
 
-  def of_age?
-    @age.to_i >= 18
-  end
-
-  def to_s
-    "Name: #{@name}, Age: #{@age}"
-  end
-
   private
 
   def of_age?
