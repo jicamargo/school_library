@@ -6,7 +6,7 @@ require_relative 'person'
 # Class representing a teacher in the library application
 #
 class Teacher < Person
-  attr_reader :specialization
+  attr_accessor :specialization
 
   def initialize(name, age, specialization = 'Unassigned')
     super(name, age)

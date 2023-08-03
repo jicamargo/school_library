@@ -17,8 +17,8 @@ class Library
     @rentals = []
   end
 
-  def create_teacher(name, age)
-    teacher = Teacher.new(name, age)
+  def create_teacher(name, age, specialization)
+    teacher = Teacher.new(name, age, specialization)
     @people << teacher
     teacher
   end

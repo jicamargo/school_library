@@ -42,20 +42,27 @@ class App
   def create_person
     print_title('Create a Person')
     type = person_type
+    case type
+    when 'T', 'S'
+      create_person_by_type(type)
+    else
+      puts "\n Invalid person type."
+    end
+  end
+
+  def create_person_by_type(type)
     name = person_name
     age = person_age
     save_person(type, name, age)
   end
 
   def save_person(type, name, age)
-    case type
-    when 'T'
-      create_teacher(name, age)
-    when 'S'
+    if type == 'T'
+      specialization = teacher_specialization
+      create_teacher(name, age, specialization)
+    else
       permission = parent_permission
       create_student(name, age, permission)
-    else
-      puts "\n Invalid person type."
     end
   end
 
@@ -65,12 +72,12 @@ class App
   end
 
   def person_name
-    print 'Enter person name: '
+    print 'Enter name: '
     gets.chomp.upcase
   end
 
   def person_age
-    print 'Enter person age: '
+    print 'Enter age: '
     gets.chomp.to_i
   end
 
@@ -79,8 +86,13 @@ class App
     gets.chomp.upcase == 'Y'
   end
 
-  def create_teacher(name, age)
-    @library.create_teacher(name, age)
+  def teacher_specialization
+    print 'Enter teacher specialization: '
+    gets.chomp.to_i
+  end
+
+  def create_teacher(name, age, specialization)
+    @library.create_teacher(name, age, specialization)
   end
 
   def create_student(name, age, permission)
@@ -100,7 +112,7 @@ class App
     print_title('Create a Rental')
     puts "Which book do you want to rent?\n\n"
     list_books('')
-    print "\nEnter the number of the book to rent: "
+    print "\nEnter number of the book to rent: "
     book_index = gets.chomp.to_i
     book = @library.list_books[book_index - 1]
     person = select_person('Who wants to rent the book?')
@@ -119,7 +131,7 @@ class App
 
   def list_rentals_for_person
     print_title('List Rentals for Person')
-    print 'Enter the person ID: '
+    print 'Enter person ID: '
     person_id = gets.chomp.to_i
     rentals = @library.list_rentals_for_person(person_id)
     display_rentals(person_id, rentals)
